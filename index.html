@@ -334,139 +334,155 @@
             box-shadow: 0 15px 25px rgba(255, 117, 140, 0.5);
         }
 
-        /* --- Premium Intro Page Design --- */
         .intro-page {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #fad0c4);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fdfbfb 100%);
             background-size: 400% 400%;
-            animation: introGradient 15s ease infinite;
-            z-index: 1000;
+            animation: introGradient 10s ease infinite;
+            min-height: 100vh;
+            width: 100%;
+            padding: 60px 30px;
+            position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
             transition: opacity 0.5s ease;
         }
 
         @keyframes introGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        .intro-ornament {
+        .intro-page::before {
+            content: '';
             position: absolute;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .intro-ornament.blob1 { width: 400px; height: 400px; top: -100px; left: -100px; background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%); }
-        .intro-ornament.blob2 { width: 500px; height: 500px; bottom: -150px; right: -150px; background: radial-gradient(circle, rgba(255,182,193,0.4) 0%, transparent 70%); }
-        
-        .floating-emoji {
-            position: absolute;
-            font-size: 35px;
-            opacity: 0.6;
-            animation: floatSlow 8s infinite ease-in-out;
-            pointer-events: none;
-            z-index: 2;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.6) 2px, transparent 2px);
+            background-size: 40px 40px;
+            z-index: 0;
         }
 
         .intro-content {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            padding: 60px 40px;
-            border-radius: 50px;
-            box-shadow: 
-                0 40px 100px rgba(0, 0, 0, 0.15),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            max-width: 600px;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            max-width: 550px;
-            width: 90%;
-            position: relative;
-            z-index: 10;
-            animation: cardEntrance 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 60px 40px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        @keyframes cardEntrance {
-            from { transform: scale(0.85) translateY(50px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
+        @keyframes bounceIn {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
         }
 
         .intro-heading {
-            font-size: 64px;
+            font-size: 72px;
             font-weight: 900;
-            margin-bottom: 10px;
-            background: linear-gradient(to bottom, #ff416c, #ff4b2b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-            text-shadow: 0 10px 20px rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+            text-shadow: 3px 3px 0px #ffa502;
         }
 
         .intro-text {
-            font-size: 22px;
-            color: #444;
-            margin-bottom: 5px;
-            font-weight: 500;
+            font-size: 24px;
+            color: #2f3542;
+            margin-bottom: 15px;
+            font-family: 'Georgia', serif;
         }
 
         .intro-text.handwritten {
             font-family: 'Dancing Script', cursive;
-            color: #d13061;
-            font-size: 44px;
+            color: #ff6b81;
+            font-size: 36px;
             margin-top: 20px;
-            font-weight: bold;
+        }
+
+        .cat-sticker {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 120px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(-50%);
+            }
+
+            50% {
+                transform: translateY(-60%);
+            }
         }
 
         .intro-buttons {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-top: 45px;
+            gap: 30px;
+            margin-top: 50px;
         }
 
         .intro-btn {
-            padding: 16px 45px;
-            font-size: 20px;
-            font-weight: 700;
+            padding: 18px 50px;
+            font-size: 22px;
+            font-weight: bold;
             border: none;
-            border-radius: 20px;
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .intro-btn.yes {
-            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
             color: white;
-            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
         }
 
         .intro-btn.yes:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 117, 140, 0.6);
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
         }
 
         .intro-btn.no {
-            background: #a4b0be;
+            background: linear-gradient(135deg, #a4b0be 0%, #747d8c 100%);
             color: white;
         }
 
         .intro-btn.no:hover {
-            background: #747d8c;
-            transform: scale(0.95);
+            transform: scale(1.05);
         }
 
         .timeline-item {
@@ -1610,17 +1626,6 @@
     </div>
 
     <div class="intro-page" id="introPage">
-        <!-- Background Ornaments -->
-        <div class="intro-ornament blob1"></div>
-        <div class="intro-ornament blob2"></div>
-        <div class="floating-emoji" style="top: 15%; left: 15%;">✨</div>
-        <div class="floating-emoji" style="top: 25%; right: 10%; animation-delay: -2s;">🌸</div>
-        <div class="floating-emoji" style="bottom: 20%; left: 10%; animation-delay: -4s;">💖</div>
-        <div class="floating-emoji" style="bottom: 15%; right: 20%; animation-delay: -6s;">🥰</div>
-        <div class="floating-emoji" style="top: 50%; left: 5%; animation-delay: -3s;">⭐</div>
-        <div class="floating-emoji" style="top: 40%; right: 5%; animation-delay: -5s; font-size: 45px;">🎈</div>
-        <div class="floating-emoji" style="bottom: 40%; right: 15%; animation-delay: -1s;">✨</div>
-
         <div id="sadBunny"
             style="display:none; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); z-index:100; text-align:center; animation: fadeIn 0.3s ease;">
             <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueWp4Nnh6NXdqNzl5Z3N6NXdqNzl5Z3N6NXdqNzl5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L95W4wv8nnb9K/giphy.gif"
@@ -1630,26 +1635,11 @@
                 style="color: #ff4757; font-size: 24px; font-weight: bold; margin-top: 15px; font-family: 'Dancing Script', cursive;">
                 Please say Yes... 🥺</p>
         </div>
-
         <div class="intro-content">
-            <!-- Decorative Corners -->
-            <div style="position: absolute; top: 15px; left: 15px; font-size: 25px; opacity: 0.6;">✨</div>
-            <div style="position: absolute; top: 15px; right: 15px; font-size: 25px; opacity: 0.6;">🌸</div>
-            <div style="position: absolute; bottom: 15px; left: 15px; font-size: 25px; opacity: 0.6;">🌸</div>
-            <div style="position: absolute; bottom: 15px; right: 15px; font-size: 25px; opacity: 0.6;">✨</div>
-
-            <div style="margin-bottom: 25px; position: relative; display: inline-block;">
-                <!-- Glowing Ring -->
-                <div style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; border-radius: 50%; border: 2px dashed rgba(255, 117, 140, 0.5); animation: rotate 10s linear infinite;"></div>
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueWp4Nnh6NXdqNzl5Z3N6NXdqNzl5Z3N6NXdqNzl5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Vz58J8shFW6BvqnYTm/giphy.gif" 
-                     alt="Welcome Cat" 
-                     style="width: 160px; border-radius: 50%; border: 6px solid white; box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3); position: relative; z-index: 2;">
-            </div>
-            
+            <div class="cat-sticker">🐱</div>
             <h1 class="intro-heading">HEY!!</h1>
             <p class="intro-text">I made something for you</p>
-            <p class="intro-text handwritten">Do you want to see? 💖</p>
-            
+            <p class="intro-text handwritten">Do you want to see?</p>
             <div class="intro-buttons">
                 <button class="intro-btn yes" onclick="showGifts()">Yes!</button>
                 <button class="intro-btn no" id="noBtn" onclick="moveNoButton()">No</button>
